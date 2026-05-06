@@ -1,20 +1,20 @@
 #!/usr/bin/env python3                                                                            
-  import requests                                                                                   
-  import json
-  import os                                                                                         
-  from datetime import datetime                                   
+import requests                                                                                   
+import json
+import os                                                                                         
+from datetime import datetime                                   
 
-  ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "")
-  POSTS_FILE = os.path.join(os.path.dirname(os.path.abspath(file)), "posts.json")
-  LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(file)), "log.txt")                        
+ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "")
+POSTS_FILE = os.path.join(os.path.dirname(os.path.abspath(file)), "posts.json")
+LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(file)), "log.txt")                        
    
-  def log(msg):                                                                                     
+def log(msg):                                                                                     
       timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")    
       with open(LOG_FILE, "a", encoding="utf-8") as f:                                              
           f.write(f"[{timestamp}] {msg}\n")
       print(f"[{timestamp}] {msg}")                                                                 
                                                                   
-  def create_container(text):
+def create_container(text):
       r = requests.post(
           "https://graph.threads.net/v1.0/me/threads",                                              
           params={"media_type": "TEXT", "text": text, "access_token": ACCESS_TOKEN}
@@ -22,7 +22,7 @@
       r.raise_for_status()                                        
       return r.json()["id"]                                                                         
    
-  def publish(creation_id):                                                                         
+def publish(creation_id):                                                                         
       r = requests.post(                                          
           "https://graph.threads.net/v1.0/me/threads_publish",
           params={"creation_id": creation_id, "access_token": ACCESS_TOKEN}
@@ -30,7 +30,7 @@
       r.raise_for_status()
       return r.json()["id"]                                                                         
                                                                   
-  def main():
+def main():
       with open(POSTS_FILE, "r", encoding="utf-8") as f:
           posts = json.load(f)
                                                                                                     
@@ -56,5 +56,5 @@
   if changed:
       with open(POSTS_FILE, "w", encoding="utf-8") as f:                                            
           json.dump(posts, f, ensure_ascii=False, indent=2)       
-  if name == "main":
+if name == "main":
       main()        
