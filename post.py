@@ -16,19 +16,27 @@ def log(msg):
         f.write(f"[{timestamp}] {msg}\n")
     print(f"[{timestamp}] {msg}")
 
+HEADERS = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
+
 def create_container(text):
     r = requests.post(
         "https://graph.threads.net/v1.0/me/threads",
-        params={"media_type": "TEXT", "text": text, "access_token": ACCESS_TOKEN}
+        headers=HEADERS,
+        data={"media_type": "TEXT", "text": text}
     )
+    if not r.ok:
+        log(f"API error: {r.status_code} {r.text}")
     r.raise_for_status()
     return r.json()["id"]
 
 def publish(creation_id):
     r = requests.post(
         "https://graph.threads.net/v1.0/me/threads_publish",
-        params={"creation_id": creation_id, "access_token": ACCESS_TOKEN}
+        headers=HEADERS,
+        data={"creation_id": creation_id}
     )
+    if not r.ok:
+        log(f"API error: {r.status_code} {r.text}")
     r.raise_for_status()
     return r.json()["id"]
 
@@ -50,6 +58,8 @@ def main():
                 post["thread_id"] = thread_id
                 changed = True
                 log(f"投稿成功: {post['datetime']}")
+            except requests.HTTPError as e:
+                log(f"投稿失敗: {post['datetime']} - {e} | response: {e.response.text}")
             except Exception as e:
                 log(f"投稿失敗: {post['datetime']} - {e}")
     if changed:
