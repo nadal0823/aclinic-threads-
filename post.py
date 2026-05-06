@@ -1,12 +1,12 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3                                                                            
   import requests                                                                                   
-  import json                                                     
-  import os
+  import json                                                                                       
+  import os                                                       
   from datetime import datetime
 
-  ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "")                                         
+  ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "")
   POSTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "posts.json")
-  LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "log.txt")                    
+  LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "log.txt")
                                                                                                     
   def log(msg):
       timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")                                      
@@ -24,11 +24,11 @@
                                                                   
   def publish(creation_id):
       r = requests.post(
-          "https://graph.threads.net/v1.0/me/threads_publish",
-          params={"creation_id": creation_id, "access_token": ACCESS_TOKEN}                         
-      )
-      r.raise_for_status()                                                                          
-      return r.json()["id"]                                       
+          "https://graph.threads.net/v1.0/me/threads_publish",                                      
+          params={"creation_id": creation_id, "access_token": ACCESS_TOKEN}
+      )                                                                                             
+      r.raise_for_status()                                        
+      return r.json()["id"]
                                                                                                     
   def main():
       with open(POSTS_FILE, "r", encoding="utf-8") as f:                                            
@@ -48,14 +48,14 @@
                   post["status"] = "posted"                                                         
                   post["posted_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
                   post["thread_id"] = thread_id                                                     
-                  changed = True                                                                    
-                  log(f"投稿成功: {post['datetime']}")
-              except Exception as e:                                                                
-                  log(f"投稿失敗: {post['datetime']} - {e}")      
-                                                                                                    
-      if changed:
-          with open(POSTS_FILE, "w", encoding="utf-8") as f:                                        
-              json.dump(posts, f, ensure_ascii=False, indent=2)   
-
+                  changed = True
+                  log(f"投稿成功: {post['datetime']}")                                              
+              except Exception as e:                              
+                  log(f"投稿失敗: {post['datetime']} - {e}")                                        
+   
+      if changed:                                                                                   
+          with open(POSTS_FILE, "w", encoding="utf-8") as f:      
+              json.dump(posts, f, ensure_ascii=False, indent=2)                                     
+   
   if __name__ == "__main__":                                                                        
-      main()
+      main()                                       
