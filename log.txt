@@ -12,3 +12,6 @@
 [2026-05-06 14:44:53] 投稿失敗: 2026-05-06 13:00 - 401 Client Error: Unauthorized for url: https://graph.threads.net/v1.0/me/threads | response: {"error":{"message":"Error validating access token: Session has expired on Sunday, 03-May-26 10:00:00 PDT. The current time is Tuesday, 05-May-26 22:44:53 PDT.","type":"OAuthException","code":190,"error_subcode":0,"fbtrace_id":"A2QXodxNXYmwexoO8qscQdN"}}
 [2026-05-06 14:48:26] 投稿成功: 2026-05-06 08:00
 [2026-05-06 14:48:30] 投稿成功: 2026-05-06 13:00
+[2026-05-06 16:10:17] 投稿成功: 2026-05-06 08:00
+[2026-05-06 16:10:21] 投稿成功: 2026-05-06 13:00
+[2026-05-06 16:10:25] 投稿成功: 2026-05-06 15:30
