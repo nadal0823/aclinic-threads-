@@ -84,3 +84,8 @@
 [2026-05-18 21:17:58] 投稿成功: 2026-05-18 15:30
 [2026-05-18 21:18:03] 投稿成功: 2026-05-18 19:00
 [2026-05-19 01:34:45] 投稿成功: 2026-05-18 21:30
+[2026-05-19 19:50:07] 投稿成功: 2026-05-19 08:00
+[2026-05-19 19:50:11] 投稿成功: 2026-05-19 13:00
+[2026-05-19 19:50:15] 投稿成功: 2026-05-19 15:30
+[2026-05-19 19:50:17] API error: 400 {"error":{"message":"The requested resource does not exist","type":"OAuthException","code":24,"error_subcode":4279009,"is_transient":false,"error_user_title":"Media Not Found","error_user_msg":"The media with id 17884943802559230 cannot be found.","fbtrace_id":"A9f9Dvi27ieVlV8p2h0B3IQ"}}
+[2026-05-19 19:50:17] 投稿失敗: 2026-05-19 19:00 - 400 Client Error: Bad Request for url: https://graph.threads.net/v1.0/me/threads_publish | response: {"error":{"message":"The requested resource does not exist","type":"OAuthException","code":24,"error_subcode":4279009,"is_transient":false,"error_user_title":"Media Not Found","error_user_msg":"The media with id 17884943802559230 cannot be found.","fbtrace_id":"A9f9Dvi27ieVlV8p2h0B3IQ"}}
