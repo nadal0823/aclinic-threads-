@@ -97,3 +97,6 @@
 [2026-05-20 19:36:26] API error: 400 {"error":{"message":"The requested resource does not exist","type":"OAuthException","code":24,"error_subcode":4279009,"is_transient":false,"error_user_title":"Media Not Found","error_user_msg":"The media with id 17885113836559230 cannot be found.","fbtrace_id":"A3mqomLS-3Xgne3sJlmOzq7"}}
 [2026-05-20 19:36:26] 投稿失敗: 2026-05-20 15:30 - 400 Client Error: Bad Request for url: https://graph.threads.net/v1.0/me/threads_publish | response: {"error":{"message":"The requested resource does not exist","type":"OAuthException","code":24,"error_subcode":4279009,"is_transient":false,"error_user_title":"Media Not Found","error_user_msg":"The media with id 17885113836559230 cannot be found.","fbtrace_id":"A3mqomLS-3Xgne3sJlmOzq7"}}
 [2026-05-20 19:36:29] 投稿成功: 2026-05-20 19:00
+[2026-05-20 21:40:08] 投稿成功: 2026-05-20 13:00
+[2026-05-20 21:40:12] 投稿成功: 2026-05-20 15:30
+[2026-05-20 21:40:16] 投稿成功: 2026-05-20 21:30
